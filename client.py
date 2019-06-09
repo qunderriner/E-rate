@@ -24,7 +24,7 @@ BULK_CREATE = [
             , function    varchar(100)
             , funding_gap INT
             )
-        """
+        """ 
     ]
 
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Send Reviews</h1>
+<p>This is a portfolio site about anything that can be put in a portfolio.</p>
+</body>
+
+<head>
+<title>Insert data to PostgreSQL with php - creating a simple web application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+li {listt-style: none;}
+</style>
+</head>
+<body>
+<h2>Enter information regarding book</h2>
+<ul>
+	<form method='post' action="/post_review">
+		<label>Consultant Name:</label>
+		<input id='cname' name="cname" type="text"/>
+		<label>Review:</label>
+		<input id='review_text' name="review_text" type="text" />
+		<input type="submit" />
+	</form>
+</ul>
+</body>
+</html>
+<!-- 
+<?php
+$db = pg_connect("host=ec2-75-101-128-10.compute-1.amazonaws.com, port=5432 dbname=d8t0mk04e3l801, user=fgkmmzoskpadsp, password=f9e1cf62ccdc299bad1f320e8cb4c4a168f3c1c953d2a5d35f952774d489a24d");
+$query = "INSERT INTO reviews VALUES ('$_POST[cname]','$_POST[review_text]')";
+$result = pg_query($query); 
+?> -->
+
+<!-- <form action="{{url_for('query_db') }} " method="post">
+<select name='state'>
+    {% for each in states %}
+     <option value="{{each}}">{{each}}</option>
+    {% endfor %}
+</select>
+<select name='function'>
+    {% for each in function %}
+     <option value="{{each}}">{{each}}</option>
+    {% endfor %}
+</select>
+<select name='type'>
+    {% for each in types %}
+     <option value="{{each}}">{{each}}</option>
+    {% endfor %}
+</select>
+<input type="submit">
+</form>
+</html> -->
