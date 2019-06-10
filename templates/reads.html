@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -8,8 +8,8 @@
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-    <h1>Send Reviews</h1>
-    <p>Please describe your experience with an e-rate consultant below.</p>
+    <h1>Read up on consultant reviews!</h1>
+    <p></p>
 </head>
 
 <head>
@@ -21,13 +21,12 @@ li {listt-style: none;}
 </head>
 <body>
 <ul>
-    <form method='post' action="/post_review">
-        <label>Consultant Name:</label>
-        <input id='cname' name="cname" type="text"/>
-        <label>Review:</label>
-        <input id='review_text' name="review_text" type="text" />
-        <input type="submit" />
-    </form>
+	<form method='post' action="/get_review">
+		<label>Consultant Name:</label>
+		<input id='cname' name="cname" type="text"/>
+		<input type="submit" />
+	</form>
 </ul>
 </body>
 </html>
+

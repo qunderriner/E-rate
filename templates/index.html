@@ -2,22 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>E-Rated</title>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>E-Rated</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
     <div class="container">
         <h1 class="logo">E-Rate Navigation</h1>
         <strong><nav>
           <ul class="menu">
-            <li><a href="{{'/reviews/'}}">Home</a></li>
+            <li><a href="{{'/reviews/'}}">Write a Review</a></li>
+            <li><a href="{{'/reads/'}}">View Reviews</a></li>
           </ul>
         </nav></strong>
       </div>
@@ -27,8 +25,8 @@
     <div class="container-full">
         <div class="row">
             <div class="col-lg-12 text-center v-center">
-                <h1>E_Rated</h1>
-                <p class="lead">Having trouble choosing and E-Rate Consultant? Our data-driven system will reconmend the best for your needs!</p>
+                <h1>E-Rated</h1>
+                <p class="lead">Having trouble choosing an E-Rate Consultant? Our data-driven system will reconmend the best for your needs!</p>
                 <br>
                 <br>
                 <br>
@@ -36,7 +34,7 @@
 
         </div>
         <!-- /row -->
-<form action="{{url_for('query_db') }} " method="post">
+<center><form action="{{url_for('query_db') }} " method="post">
 <select name='state'>
     {% for each in states %}
      <option value="{{each}}">{{each}}</option>
@@ -54,6 +52,8 @@
 </select>
 <input type="submit">
 </form>
+</center>
+
 
 
     <!-- script references -->

@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_heroku import Heroku 
 from sqlalchemy.sql import func
 from sqlalchemy import cast, Integer, Float
+# from flask.ext.wtf import Form, TextField
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 
@@ -23,6 +24,7 @@ class Applications(db.Model):
     consulting_firms_email = db.Column(db.Text)
     funding_gap = db.Column(db.Float)
     orig_funding_request = db.Column(db.Float)
+    cmtd_funding_request = db.Column(db.Float)
     # whatever columns you want to use you add here
     def __repr__(self):
         return ''
@@ -66,17 +68,19 @@ def query_db():
 
     # write query here that returns what you want 
 
+    # consultants = db.session.query(Applications.consulting_firms_name, 
+    #     Applications.consulting_firms_email,
+    #     Applications.cmtd_funding_request,
+    #     Applications.orig_funding_request,
+    #     cast(func.div(Applications.cmtd_funding_request / Applications.orig_funding_request), Float).label('pct')).filter(Applications.applicant_state==state,
+    #      Applications.applicant_type==app_type,
+    #      Applications.function==function).order_by('pct').limit(5).all()
+    
     consultants = db.session.query(Applications.consulting_firms_name, 
         Applications.consulting_firms_email, 
-        cast((Applications.funding_gap / Applications.orig_funding_request), Float).label('pct')).filter(Applications.applicant_state==state,
+        cast(func.avg(Applications.funding_gap), Integer).label('avgap')).filter(Applications.applicant_state==state,
          Applications.applicant_type==app_type,
-         Applications.function==function).order_by('pct').limit(5).all()
-    
-    # consultants = db.session.query(Applications.consulting_firms_name, 
-    #     Applications.consulting_firms_email, 
-    #     cast(func.avg(Applications.funding_gap), Integer).label('avgap')).filter(Applications.applicant_state==state,
-    #      Applications.applicant_type==app_type,
-    #      Applications.function==function).group_by(Applications.consulting_firms_name, Applications.consulting_firms_email).order_by('avgap').limit(5).all()
+         Applications.function==function).group_by(Applications.consulting_firms_name, Applications.consulting_firms_email).order_by('avgap').limit(5).all()
     """
     consultants = db.session.query(Applications.consulting_firms_name, 
         Applications.consulting_firms_email).filter(Applications.applicant_state==state,
@@ -87,35 +91,24 @@ def query_db():
     # make a template with blanks for the results
     return render_template('success.html', your_list=consultants)
 
+@app.route('/get_review', methods=['GET','POST'])
+def get_review():
+    consultant = request.form['cname']
+    rv = db.session.query(Review.consultant_name, Review.description).filter(Review.consultant_name==consultant)
+
+    return render_template('success-reads.html', your_list=rv)
+
 
 @app.route('/reviews/', methods=['GET', 'POST'])
 def about():
     return render_template('reviews.html')
 
 
+@app.route('/reads/', methods=['GET', 'POST'])
+def view_review():
+    return render_template('reads.html')
 
 
-
-
-# class ReusableForm(Form):
-#     name = TextField('Name:', validators=[validators.required()])
-    
-#     @app.route("/reviews/", methods=['GET', 'POST'])
-#     def hello():
-#         form = ReusableForm(request.form)
-        
-#         # print(form.errors)
-#         if request.method == 'POST':
-#             name=request.form['name']
-#         # print(name)
-        
-#         if form.validate():
-#         # Save the comment here.
-#             flash('Hello ' + name)
-#         else:
-#             flash('Error: All the form fields are required. ')
-        
-#         return render_template('reviews.html', form=form)
 
 
 if __name__ == '__main__':

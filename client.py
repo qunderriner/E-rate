@@ -6,7 +6,6 @@ logger= logging.getLogger('erates')
 
 TABLES = ['applications', 'consultants', 'reviews']
 
-#what's original discount? 
 BULK_CREATE = [
         """
         CREATE TABLE bulk_temp (
