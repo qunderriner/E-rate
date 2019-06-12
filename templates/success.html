@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <a href="{{'/'}}">Home</a>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -25,23 +25,18 @@
                 <br>
                 <br>
                 {% for your_list_element in your_list %}
-                    <h4>{{ your_list_element }} </h4>
+                <h3>Firm Name </h3> <p> {{ your_list_element.consulting_firms_name}} </p>
+                <h3> Firm Email</h3> <p> {{your_list_element.consulting_firms_email }}</p> 
+                <h3>Proprietary Score (lower is better) </h3> <p>{{your_list_element.avgap }}</p>
+                <br>
+                <br>
                 {% endfor %}
 
             </div>
 
         </div>
-        <center>
-            <p> Consulting Firm Name, Consulting Firm Email Address, Proprietary Score (lower is better)</p>
-        </center>
+        
 
-        <!-- /row -->
-
-
-    <!-- /container full -->
-
-
-    <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>

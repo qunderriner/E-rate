@@ -65,38 +65,21 @@ def query_db():
     function = request.form['function']
     app_type = request.form['type']
     print(state, function, app_type)
-
-    # write query here that returns what you want 
-
-    # consultants = db.session.query(Applications.consulting_firms_name, 
-    #     Applications.consulting_firms_email,
-    #     Applications.cmtd_funding_request,
-    #     Applications.orig_funding_request,
-    #     cast(func.div(Applications.cmtd_funding_request / Applications.orig_funding_request), Float).label('pct')).filter(Applications.applicant_state==state,
-    #      Applications.applicant_type==app_type,
-    #      Applications.function==function).order_by('pct').limit(5).all()
     
     consultants = db.session.query(Applications.consulting_firms_name, 
         Applications.consulting_firms_email, 
         cast(func.avg(Applications.funding_gap), Integer).label('avgap')).filter(Applications.applicant_state==state,
          Applications.applicant_type==app_type,
          Applications.function==function).group_by(Applications.consulting_firms_name, Applications.consulting_firms_email).order_by('avgap').limit(5).all()
-    """
-    consultants = db.session.query(Applications.consulting_firms_name, 
-        Applications.consulting_firms_email).filter(Applications.applicant_state==state,
-         Applications.applicant_type==app_type,
-         Applications.function==function).limit(5).all()    
-    """
-    #need correct type for money, also need to either make fucntion one word or drop it
-    # make a template with blanks for the results
+
     return render_template('success.html', your_list=consultants)
 
 @app.route('/get_review', methods=['GET','POST'])
 def get_review():
     consultant = request.form['cname']
-    rv = db.session.query(Review.consultant_name, Review.description).filter(Review.consultant_name==consultant)
+    rv = db.session.query(Review.description).filter(Review.consultant_name==consultant)
 
-    return render_template('success-reads.html', your_list=rv)
+    return render_template('success-reads.html', your_list=rv, consultant=consultant)
 
 
 @app.route('/reviews/', methods=['GET', 'POST'])

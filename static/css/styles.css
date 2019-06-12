@@ -9,7 +9,7 @@ h1 {
 }
 
 .lead {
-	color:#DDCCEE;
+  color:#DDCCEE;
 }
 
 
@@ -32,3 +32,18 @@ h1 {
   margin-top:7%;
 }
   
+
+.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
+
+div.field {
+    float: left;
+    margin: 0
+}

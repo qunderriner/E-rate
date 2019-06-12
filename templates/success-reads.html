@@ -24,9 +24,15 @@
                 <br>
                 <br>
                 <br>
-                {% for your_list_element in your_list %}
-                    <h4>{{ your_list_element }} </h4>
+                <h3> {{consultant}} </h3>
+                <p id="review_text"></p>
+
+                {% for your_list_element in your_list%}
+                <p> {{your_list_element.description}} </p>
                 {% endfor %}
+                <!-- {% for your_list_element in your_list %} -->
+                    <!-- <h4>{{ your_list_element }} </h4> -->
+                <!-- {% endfor %} -->
 
             </div>
 
