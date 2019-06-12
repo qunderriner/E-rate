@@ -16,4 +16,4 @@ Our tool enables users to gain insight into the top performing firms, access the
 
 ## Data 
 
-Our data came from the universal service administrative company’s [open data portal](https://opendata.usac.org/browse?category=E-rate&limitTo=datasets).
+Our data came from the universal service administrative company’s [open data portal](https://opendata.usac.org/browse?category=E-rate&limitTo=datasets). The data is stored in a PostgreSQL database on Heroku.
