@@ -4,7 +4,7 @@
 
 The E-rate Program provides federal funds (up to $3.9 billion a year) for discounts to assist eligible schools and libraries to obtain affordable internet access and telecommunications services. School eligibility is related to the number of students eligible for free and reduced lunch that they serve. Applying for these funds is generally outside the expertise of school systems so they hire consultants. Consultants typically work across state lines, however, given the lack of transparency and expertise in the e-rates market, it's challenging for school districts and libraries to know if the consultant provided them  the maximum possible discount. 
 
-To understand the nuances of the E-rates market and how we could possible create a solution, we interviewed e-rate practitioners. Through this discussion we were able to better understand the underlying data and define our metric of success -- money saved
+To understand the nuances of the E-rates market and how we could possible create a solution, we interviewed e-rate practitioners. Through this discussion we were able to better understand the underlying data and define our metric of success.
 
 ## Goal 
 
